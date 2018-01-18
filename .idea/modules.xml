@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Airly.iml" filepath="$PROJECT_DIR$/.idea/modules/Airly.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Airly_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Airly_main.iml" group="Airly" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Airly_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Airly_test.iml" group="Airly" />
+    </modules>
+  </component>
+</project>
