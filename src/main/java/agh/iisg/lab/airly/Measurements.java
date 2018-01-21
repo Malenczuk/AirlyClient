@@ -10,6 +10,8 @@ public class Measurements {
   private Double humidity;
   private Double temperature;
   private Double pollutionLevel;
+  private Double windDirection;
+  private Double windSpeed;
 
   public Double getAirQualityIndex() {
     return airQualityIndex;
@@ -72,4 +74,12 @@ public class Measurements {
   }
 
   public void setPollutionLevel(Double pollutionLevel) { this.pollutionLevel = pollutionLevel; }
+
+  public Double getWindDirection() { return windDirection; }
+
+  public void setWindDirection(Double windDirection) { this.windDirection = windDirection; }
+
+  public Double getWindSpeed() { return windSpeed; }
+
+  public void setWindSpeed(Double windSpeed) { this.windSpeed = windSpeed; }
 }

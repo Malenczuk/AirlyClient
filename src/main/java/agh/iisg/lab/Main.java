@@ -3,13 +3,25 @@ package agh.iisg.lab;
 import agh.iisg.lab.airly.AirlyException;
 import agh.iisg.lab.command.Command;
 import agh.iisg.lab.command.CommandException;
+import agh.iisg.lab.console.Console;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.text.ParseException;
 
 public class Main {
+    static String elo = "│ ┤ ┴ ┐ └ ┬ ├ ─ ┼ ┘ ┌" +
+                        "              ┌─────────┐              " +
+                        "┌─────────────┤CAQI  116├─────────────┐" +
+                        "│             └─────────┘             │" +
+                        "│Very high pollution! Stay            │" +
+                        "│today at home.The air is             │" +
+                        "│threatening your health              │" +
+                        "├─────────────────────────────────────┤" +
+                        "│PM2.5           162 μg/m³   648 % │" +
+            "│        │";
 
     public static void main(String[] args) {
+
         try {
             Command appCommand = Command.getCommand(args);
             AirlyClient airlyClient = new AirlyClient(appCommand);
@@ -17,8 +29,7 @@ public class Main {
                 System.out.println(new Console(airlyClient.getResponse().getBody(), appCommand).printHistory());
             else System.out.println(new Console(airlyClient.getResponse().getBody(), appCommand).printMeasurements());
         } catch (UnirestException | ParseException | CommandException | AirlyException e) {
-            System.err.println(e);
-            System.exit(1);
+            System.out.println(e);
         }
     }
 }

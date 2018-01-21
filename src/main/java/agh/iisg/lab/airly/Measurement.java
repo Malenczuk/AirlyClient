@@ -13,7 +13,7 @@ public class Measurement {
   }
 
   public void setCurrentMeasurements(CurrentMeasurements currentMeasurements) {
-    this.currentMeasurements = currentMeasurements;
+      this.currentMeasurements = currentMeasurements;
   }
 
   public List<History> getHistory() {

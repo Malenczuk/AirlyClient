@@ -20,15 +20,6 @@ public enum SensorData {
      * Very high pollution! Stay today at home.The air is threatening your health
      **/
 
-
-    public static final String RESET = "\033[0m";
-    public static final String BOLD = "\033[1m";
-    public static final String VERYLOW = "\033[38;5;46;1m";
-    public static final String LOW = "\033[38;5;226;1m";
-    public static final String MEDIUM = "\033[38;5;214;1m";
-    public static final String HIGH = "\033[38;5;202;1m";
-    public static final String VERYHIGH = "\033[38;5;196;1m";
-    public static final String EXTREME = "\033[38;5;124;1m";
     public static final String caqi0 = "\033[1mGreat air here today!\033[0m Don’t hesitate to go out today";
     public static final String caqi25 = "\033[1mAir is quite good.\033[0m Good day for outdoor activities";
     public static final String caqi50 = "\033[1mWell… It’s been better.\033[0m Don’t do sport outside today";
@@ -122,5 +113,15 @@ public enum SensorData {
         }
     }
 
+    public boolean hasPercentage(){
+        return this == PM25 || this == PM10;
+    }
 
+    public int getPercentage(int value){
+        if (this == PM25)
+            return value * 4;
+        else if (this == PM10)
+            return value * 2;
+        return 0;
+    }
 }
