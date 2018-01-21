@@ -1,5 +1,6 @@
 package agh.iisg.lab.console;
 
+import agh.iisg.lab.airly.AirlyException;
 import agh.iisg.lab.airly.Measurements;
 import agh.iisg.lab.airly.SensorData;
 
@@ -37,11 +38,13 @@ public class PrettyPrinter {
     private static final String end = " │" + "\n";
     private static final String last = "└─────────────────────────────────────┘" + "\n";
 
-    public String prettyPrint(Measurements measurements, String From, String To) {
+    public String prettyPrint(Measurements measurements, String From, String To) throws AirlyException {
+        boolean data = false;
         stringBuilder = new StringBuilder();
         Double value;
         SensorData sensorData = SensorData.AirQualityIndex;
         if ((value = measurements.getAirQualityIndex()) != null) {
+            data = true;
             int caqi = (int) Math.round(value);
             stringBuilder.append(caqiFst);
             setColor(caqi);
@@ -60,10 +63,18 @@ public class PrettyPrinter {
                         .append(end);
             }
             stringBuilder.append(prettyCaqi);
-        } else stringBuilder.append(noCaqi);
+        } else {
+            stringBuilder.append(noCaqi);
+            if (From != null && To != null){
+                stringBuilder.append(begin).append(From);
+                addSpace(13);
+                stringBuilder.append(To).append(end).append(prettyCaqi);
+            }
+        }
 
         while ((sensorData = sensorData.next()) != null) {
             if ((value = sensorData.getValue(measurements)) != null) {
+                data = true;
                 int len = Integer.toString((int) Math.round(value)).length();
                 int per = sensorData.getPercentage((int) Math.round(value));
                 String percent = sensorData.hasPercentage() ? Integer.toString(per) + " %" : "";
@@ -75,6 +86,8 @@ public class PrettyPrinter {
                 stringBuilder.append(percent).append(end);
             }
         }
+        if(!data)throw new AirlyException("No Data Found");
+            //stringBuilder.append("│          NO   DATA   FOUND          │\n");
         stringBuilder.append(last);
         return stringBuilder.toString();
     }

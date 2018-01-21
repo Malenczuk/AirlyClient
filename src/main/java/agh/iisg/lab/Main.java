@@ -9,16 +9,6 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import java.text.ParseException;
 
 public class Main {
-    static String elo = "│ ┤ ┴ ┐ └ ┬ ├ ─ ┼ ┘ ┌" +
-                        "              ┌─────────┐              " +
-                        "┌─────────────┤CAQI  116├─────────────┐" +
-                        "│             └─────────┘             │" +
-                        "│Very high pollution! Stay            │" +
-                        "│today at home.The air is             │" +
-                        "│threatening your health              │" +
-                        "├─────────────────────────────────────┤" +
-                        "│PM2.5           162 μg/m³   648 % │" +
-            "│        │";
 
     public static void main(String[] args) {
 

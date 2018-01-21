@@ -35,8 +35,10 @@ public class Console {
     }
 
     public String printHistory() throws ParseException, AirlyException {
+        boolean data = false;
         for (History history : measurement.getHistory()) {
             if (history.getMeasurements() != null) {
+                data = true;
                 final SimpleDateFormat parseDate = new SimpleDateFormat("yyyy-MM-DD'T'HH:mm:ss'Z'");
                 final SimpleDateFormat formatDate = new SimpleDateFormat("MM.DD HH:mm");
                 String From = (formatDate.format(parseDate.parse(history.getFromDateTime())));
@@ -44,6 +46,7 @@ public class Console {
                 stringBuilder.append(prettyPrinter.prettyPrint(measurement.getCurrentMeasurements(), From, To));
             }
         }
+        if(!data) throw new AirlyException("No Data Found");
         return airly + stringBuilder.toString();
     }
 }
