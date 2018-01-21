@@ -11,7 +11,6 @@ import java.text.ParseException;
 public class Main {
 
     public static void main(String[] args) {
-
         try {
             Command appCommand = Command.getCommand(args);
             AirlyClient airlyClient = new AirlyClient(appCommand);

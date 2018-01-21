@@ -8,12 +8,12 @@ public class PrettyPrinter {
     private StringBuilder stringBuilder;
     private static final String RESET = "\033[0m";
     private static final String BOLD = "\033[1m";
-    public static final String VERYLOW = "\033[38;5;46;1m";
-    public static final String LOW = "\033[38;5;226;1m";
-    public static final String MEDIUM = "\033[38;5;214;1m";
-    public static final String HIGH = "\033[38;5;202;1m";
-    public static final String VERYHIGH = "\033[38;5;196;1m";
-    public static final String EXTREME = "\033[38;5;124;1m";
+    public static final String VERYLOW = "\033[32;1m"; //"\033[38;5;46;1m";
+    public static final String LOW = "\033[33;1m"; //"\033[38;5;226;1m";
+    public static final String MEDIUM ="\033[33;1m"; //"\033[38;5;214;1m";
+    public static final String HIGH = "\033[31;1m";//"\033[38;5;202;1m";
+    public static final String VERYHIGH = "\033[31;1m";//"\033[38;5;196;1m";
+    public static final String EXTREME = "\033[31;1m";//"\033[38;5;124;1m";
 
     private static final String prettyCaqi0 = "│        " + BOLD + "Great air here today!" + RESET + "        │" +
             "\n" + "│   Don’t hesitate to go out today.   │" + "\n";
@@ -51,6 +51,7 @@ public class PrettyPrinter {
             stringBuilder.append("CAQI");
             addSpace(5 - Integer.toString(caqi).length());
             stringBuilder.append(caqi)
+                    .append(RESET)
                     .append(caqiSnd);
             if (From == null || To == null) {
                 stringBuilder.append(caqiTrd);
